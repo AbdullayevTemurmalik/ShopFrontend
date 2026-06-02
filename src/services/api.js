@@ -4,7 +4,6 @@ const api = axios.create({
   baseURL: "shopbackend-production-d277.up.railway.app",
 });
 
-// Request interceptor to add token
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
