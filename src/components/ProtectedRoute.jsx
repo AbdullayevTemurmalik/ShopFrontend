@@ -1,0 +1,20 @@
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuth();
+  const location = useLocation();
+  
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
+  // Agar foydalanuvchi admin bo'lmasa va /admin sahifasiga kirmoqchi bo'lsa
+  if (location.pathname.startsWith('/admin') && user.role !== 'admin') {
+    return <Navigate to="/" />;
+  }
+  
+  return children;
+};
+
+export default ProtectedRoute;
