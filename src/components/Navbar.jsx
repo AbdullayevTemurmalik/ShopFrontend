@@ -52,7 +52,7 @@ const Navbar = () => {
             
             <button 
               onClick={toggleMenu} 
-              className="p-2.5 bg-blue-600/10 border border-blue-500/20 rounded-xl text-blue-500 hover:bg-blue-600 hover:text-white transition-all active:scale-90"
+              className="md:hidden p-2.5 bg-blue-600/10 border border-blue-500/20 rounded-xl text-blue-500 hover:bg-blue-600 hover:text-white transition-all active:scale-90"
             >
               <Menu className="w-6 h-6" />
             </button>
