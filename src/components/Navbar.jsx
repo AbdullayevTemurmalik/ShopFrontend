@@ -68,14 +68,15 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={toggleMenu}
-              className="fixed inset-0 bg-slate-950/90 z-[60]"
+              className="fixed inset-0 bg-[#000000] z-[60]"
             />
             <motion.div 
               initial="closed"
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="fixed top-0 right-0 bottom-0 w-[300px] bg-blue-950 border-l border-blue-500/30 z-[70] p-8 shadow-2xl flex flex-col backdrop-blur-none"
+              style={{ backgroundColor: '#020617' }}
+              className="fixed top-0 right-0 bottom-0 w-[300px] border-l border-blue-500/30 z-[70] p-8 shadow-2xl flex flex-col"
             >
               <div className="flex justify-between items-center mb-12">
                 <div className="flex items-center gap-3">
