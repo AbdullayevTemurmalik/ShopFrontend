@@ -38,6 +38,15 @@ const Navbar = () => {
                 <span>Admin</span>
               </Link>
             )}
+            {user && (
+              <button 
+                onClick={logout} 
+                className="text-sm font-bold flex items-center gap-1 text-slate-400 hover:text-red-500 transition-all"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Chiqish</span>
+              </button>
+            )}
           </div>
 
           <div className="flex items-center gap-2 xs:gap-4">
@@ -75,7 +84,7 @@ const Navbar = () => {
               animate="open"
               exit="closed"
               variants={menuVariants}
-              style={{ backgroundColor: '#020617' }}
+              style={{ backgroundColor: '#1e3a8a' }}
               className="fixed top-0 right-0 bottom-0 w-[300px] border-l border-blue-500/30 z-[70] p-8 shadow-2xl flex flex-col"
             >
               <div className="flex justify-between items-center mb-12">

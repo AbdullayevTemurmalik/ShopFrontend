@@ -15,14 +15,7 @@ const Login = () => {
     login(userName, password);
   };
 
-  const handleAdminQuickLogin = () => {
-    const pass = prompt('Admin parolini kiriting:');
-    if (pass === 'admin') {
-      login('admin', 'admin');
-    } else if (pass !== null) {
-      toast.error('Parol noto\'g\'ri!');
-    }
-  };
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-slate-950 p-4">
@@ -88,16 +81,7 @@ const Login = () => {
           </Link>
         </p>
 
-        <div className="mt-6 pt-6 border-t border-slate-800">
-          <button
-            type="button"
-            onClick={handleAdminQuickLogin}
-            className="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-3 rounded-xl transition-all transform active:scale-95 flex items-center justify-center gap-2"
-          >
-            <Shield className="w-5 h-5" />
-            Admin sifatida kirish
-          </button>
-        </div>
+
       </div>
     </div>
   );
