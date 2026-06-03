@@ -34,7 +34,7 @@ const Navbar = () => {
             <span className="hidden xs:block text-lg xs:text-xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">InternetShop</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden sm:flex items-center gap-8">
             <Link to="/" className={`text-sm font-medium transition-colors ${location.pathname === '/' ? 'text-blue-500' : 'text-slate-400 hover:text-white'}`}>Asosiy</Link>
             <Link to="/shop" className={`text-sm font-medium transition-colors ${location.pathname === '/shop' ? 'text-blue-500' : 'text-slate-400 hover:text-white'}`}>Do'kon</Link>
             {user?.role === 'admin' && (
@@ -55,7 +55,7 @@ const Navbar = () => {
               {cartItems.length > 0 && <span className="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full animate-pulse">{cartItems.length}</span>}
             </Link>
             
-            <div className="hidden sm:flex items-center gap-3 ml-2 pl-4 border-l border-slate-800">
+            <div className="hidden md:flex items-center gap-3 ml-2 pl-4 border-l border-slate-800">
               <div className="text-right">
                 <p className="text-xs font-medium text-white">{user?.userName}</p>
                 <p className="text-[10px] text-slate-500">{user?.role === 'admin' ? 'Admin' : 'Mijoz'}</p>
@@ -63,7 +63,7 @@ const Navbar = () => {
               <button onClick={logout} className="p-2 bg-slate-900 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-500/10 transition-all"><LogOut className="w-5 h-5" /></button>
             </div>
 
-            <button onClick={toggleMenu} className="md:hidden p-2 text-slate-400 hover:text-white transition-colors">
+            <button onClick={toggleMenu} className="sm:hidden p-2 bg-slate-900 rounded-xl text-blue-500 hover:text-white transition-all border border-slate-800">
               <Menu className="w-6 h-6" />
             </button>
           </div>
@@ -79,14 +79,14 @@ const Navbar = () => {
               exit="closed"
               variants={overlayVariants}
               onClick={toggleMenu}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 sm:hidden"
             />
             <motion.div 
               initial="closed"
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="fixed top-0 right-0 bottom-0 w-[280px] bg-slate-950 border-l border-slate-800 z-[60] p-6 shadow-2xl md:hidden"
+              className="fixed top-0 right-0 bottom-0 w-[280px] bg-slate-950 border-l border-slate-800 z-[60] p-6 shadow-2xl sm:hidden"
             >
               <div className="flex justify-between items-center mb-10">
                 <span className="text-xl font-bold text-white">Menyu</span>

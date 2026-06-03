@@ -81,11 +81,11 @@ const Login = () => {
         <div className="mt-6 pt-6 border-t border-slate-800">
           <button
             type="button"
-            onClick={() => login('admin', 'admin')}
+            onClick={() => { setUserName('admin'); setPassword('admin'); }}
             className="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-3 rounded-xl transition-all transform active:scale-95 flex items-center justify-center gap-2"
           >
             <Shield className="w-5 h-5" />
-            Admin sifatida kirish
+            Admin ma'lumotlarini to'ldirish
           </button>
         </div>
       </div>
