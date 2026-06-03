@@ -28,7 +28,6 @@ export const AuthProvider = ({ children }) => {
     const cleanUserName = userName.trim().toLowerCase();
     const cleanPassword = password.trim();
 
-    // Admin uchun maxsus tekshiruv
     if (cleanUserName === 'admin' && cleanPassword === 'admin') {
       const adminUser = { id: 9999, userName: 'admin', role: 'admin' };
       localStorage.setItem('token', 'admin-secret-token');

@@ -9,7 +9,6 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/login" />;
   }
 
-  // Agar foydalanuvchi admin bo'lmasa va /admin sahifasiga kirmoqchi bo'lsa
   if (location.pathname.startsWith('/admin') && user.role !== 'admin') {
     return <Navigate to="/" />;
   }

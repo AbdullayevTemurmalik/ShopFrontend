@@ -109,7 +109,6 @@ const Admin = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Sidebar */}
         <div className="w-full md:w-64 space-y-2">
           <button 
             onClick={() => setActiveTab('products')}
@@ -138,7 +137,6 @@ const Admin = () => {
           </button>
         </div>
 
-        {/* Content */}
         <div className="flex-grow bg-slate-900/50 border border-slate-800 rounded-3xl p-8 backdrop-blur-xl">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-black text-white capitalize">{activeTab === 'products' ? 'Mahsulotlar' : 'Kategoriyalar'}</h2>
@@ -197,7 +195,6 @@ const Admin = () => {
         </div>
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-[2.5rem] p-8 shadow-2xl relative">

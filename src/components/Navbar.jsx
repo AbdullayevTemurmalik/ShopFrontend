@@ -14,9 +14,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center gap-2">
             <div className="bg-blue-600 p-2 rounded-xl">
-              <ShoppingBag className="w-6 h-6 text-white" />
+              <ShoppingBag className="w-5 h-5 xs:w-6 xs:h-6 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">InternetShop</span>
+            <span className="hidden xs:block text-lg xs:text-xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">InternetShop</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

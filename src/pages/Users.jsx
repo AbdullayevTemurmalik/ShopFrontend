@@ -49,7 +49,7 @@ const Users = () => {
     setUserForm({
       userName: user.userName,
       email: user.email,
-      password: '' // Parolni ko'rsatmaymiz, faqat yangilash uchun
+      password: ''
     });
     setShowEditModal(true);
   };
@@ -58,7 +58,7 @@ const Users = () => {
     e.preventDefault();
     try {
       const submitData = { ...userForm };
-      if (!submitData.password) delete submitData.password; // Agar yangi parol yozilmasa, eski holicha qoladi
+      if (!submitData.password) delete submitData.password;
 
       await api.put(`/users/updateUser/${editingUser.id}`, submitData);
       toast.success('Foydalanuvchi yangilandi!');
@@ -122,7 +122,6 @@ const Users = () => {
         </div>
       )}
 
-      {/* Tahrirlash Modali */}
       {showEditModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-slate-900 border border-slate-800 w-full max-w-md rounded-[40px] p-10 shadow-2xl relative">

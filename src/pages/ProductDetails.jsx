@@ -39,8 +39,8 @@ const ProductDetails = () => {
           <button onClick={() => toggleLike(product.id)} className={`absolute top-6 right-6 p-4 rounded-full ${isLiked ? 'bg-red-500 text-white' : 'bg-white/10 text-white hover:text-red-500'}`}><Heart className="w-6 h-6" fill={isLiked ? 'currentColor' : 'none'} /></button>
         </div>
         <div className="flex flex-col justify-center">
-          <div className="mb-8"><span className="text-blue-500 text-xs font-bold uppercase tracking-widest">{product.category?.name}</span><h1 className="text-5xl font-black text-white mt-6 mb-4">{product.name}</h1><p className="text-3xl font-black text-blue-500">${product.price}</p></div>
-          <p className="text-slate-400 text-lg leading-relaxed mb-10 border-b border-slate-800 pb-10">{product.description}</p>
+          <div className="mb-8"><span className="text-blue-500 text-xs font-bold uppercase tracking-widest">{product.category?.name}</span><h1 className="text-3xl xs:text-4xl md:text-5xl font-black text-white mt-4 xs:mt-6 mb-4">{product.name}</h1><p className="text-2xl xs:text-3xl font-black text-blue-500">${product.price}</p></div>
+          <p className="text-slate-400 text-base xs:text-lg leading-relaxed mb-10 border-b border-slate-800 pb-10">{product.description}</p>
           <div className="flex flex-col sm:flex-row gap-6 mb-10">
             <div className="flex items-center bg-slate-900 border border-slate-800 p-2 rounded-2xl"><button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="w-12 h-12 text-white text-2xl font-bold">-</button><span className="w-16 text-center text-xl font-black text-white">{quantity}</span><button onClick={() => setQuantity(q => q + 1)} className="w-12 h-12 text-white text-2xl font-bold">+</button></div>
             <button onClick={() => addToCart(product.id, quantity)} className="flex-grow flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white text-lg font-bold py-4 px-8 rounded-2xl shadow-xl transition-all"> <ShoppingCart className="w-6 h-6" /><span>Savatga Qo'shish</span></button>

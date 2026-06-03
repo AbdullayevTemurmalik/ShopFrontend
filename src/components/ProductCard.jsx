@@ -15,12 +15,12 @@ const ProductCard = ({ product }) => {
           <button onClick={() => toggleLike(product.id)} className={`p-3 rounded-full transition-all transform hover:scale-110 ${isLiked ? 'bg-red-500 text-white' : 'bg-white text-slate-900 hover:bg-red-500 hover:text-white'}`}><Heart className="w-5 h-5" fill={isLiked ? 'currentColor' : 'none'} /></button>
         </div>
       </div>
-      <div className="p-6">
+      <div className="p-4 xs:p-6">
         <div className="flex justify-between items-start mb-2">
-          <div><p className="text-xs font-semibold text-blue-500 uppercase tracking-wider mb-1">{product.category?.name}</p><h3 className="text-lg font-bold text-white line-clamp-1">{product.name}</h3></div>
-          <p className="text-lg font-black text-white">${product.price}</p>
+          <div><p className="text-[10px] xs:text-xs font-semibold text-blue-500 uppercase tracking-wider mb-1">{product.category?.name}</p><h3 className="text-base xs:text-lg font-bold text-white line-clamp-1">{product.name}</h3></div>
+          <p className="text-base xs:text-lg font-black text-white">${product.price}</p>
         </div>
-        <button onClick={() => addToCart(product.id)} className="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-blue-600 text-white font-bold py-3 rounded-2xl transition-all"><ShoppingCart className="w-5 h-5" /><span>Savatga</span></button>
+        <button onClick={() => addToCart(product.id)} className="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-blue-600 text-white font-bold py-2.5 xs:py-3 rounded-xl xs:rounded-2xl transition-all"><ShoppingCart className="w-4 h-4 xs:w-5 xs:h-5" /><span>Savatga</span></button>
       </div>
     </div>
   );
