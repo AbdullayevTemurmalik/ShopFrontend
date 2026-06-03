@@ -2,9 +2,8 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import { ShoppingBag, ShoppingCart, Heart, LogOut, Settings, Menu, X, Home, Store } from 'lucide-react';
+import { ShoppingBag, ShoppingCart, Heart, LogOut, Settings, Menu, X, Home, Store, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ConfirmModal from './ConfirmModal';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -21,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800">
+    <nav className="sticky top-0 z-50 bg-slate-950 border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center gap-2">
@@ -80,14 +79,14 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={toggleMenu}
-              className="fixed inset-0 bg-[#000000] z-[60]"
+              className="fixed inset-0 bg-black/60 z-[60]"
             />
             <motion.div 
               initial="closed"
               animate="open"
               exit="closed"
               variants={menuVariants}
-              className="fixed top-0 right-0 bottom-0 w-[300px] bg-blue-950 border-l border-blue-500/30 z-[70] p-8 shadow-2xl flex flex-col"
+              className="fixed top-0 right-0 bottom-0 w-[300px] bg-[#1e3a8a] border-l border-blue-500/30 z-[70] p-8 shadow-2xl flex flex-col"
             >
               <div className="flex justify-between items-center mb-12">
                 <div className="flex items-center gap-3">
@@ -153,14 +152,54 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      <ConfirmModal 
-        isOpen={isLogoutModalOpen}
-        onClose={() => setIsLogoutModalOpen(false)}
-        onConfirm={logout}
-        title="Tizimdan chiqish"
-        message="Rostdan ham tizimdan chiqishni xohlaysizmi?"
-        confirmText="Chiqish"
-      />
+      <AnimatePresence>
+        {isLogoutModalOpen && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsLogoutModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="relative w-full max-w-[320px] bg-slate-900 border border-slate-800 p-6 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col items-center text-center"
+            >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500" />
+              
+              <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4 mt-2 shadow-inner">
+                <LogOut className="w-8 h-8 text-blue-400 ml-1" />
+              </div>
+              
+              <h3 className="text-xl font-bold text-white mb-2">Chiqish</h3>
+              <p className="text-sm text-slate-400 mb-6">Tizimdan rostdan ham chiqmoqchimisiz?</p>
+              
+              <div className="flex gap-3 w-full">
+                <button 
+                  onClick={() => setIsLogoutModalOpen(false)}
+                  className="flex-1 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold py-2.5 rounded-xl transition-all"
+                >
+                  Bekor qilish
+                </button>
+                <button 
+                  onClick={() => {
+                    setIsLogoutModalOpen(false);
+                    logout();
+                  }}
+                  className="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold py-2.5 rounded-xl shadow-lg shadow-blue-500/20 transition-all active:scale-95"
+                >
+                  Ha, chiqish
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
