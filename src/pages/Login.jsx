@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ShoppingBag, Lock, User, Eye, EyeOff, Shield } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [userName, setUserName] = useState('');
@@ -12,6 +13,15 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(userName, password);
+  };
+
+  const handleAdminQuickLogin = () => {
+    const pass = prompt('Admin parolini kiriting:');
+    if (pass === 'admin') {
+      login('admin', 'admin');
+    } else if (pass !== null) {
+      toast.error('Parol noto\'g\'ri!');
+    }
   };
 
   return (
@@ -81,11 +91,11 @@ const Login = () => {
         <div className="mt-6 pt-6 border-t border-slate-800">
           <button
             type="button"
-            onClick={() => { setUserName('admin'); setPassword('admin'); }}
+            onClick={handleAdminQuickLogin}
             className="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-3 rounded-xl transition-all transform active:scale-95 flex items-center justify-center gap-2"
           >
             <Shield className="w-5 h-5" />
-            Admin ma'lumotlarini to'ldirish
+            Admin sifatida kirish
           </button>
         </div>
       </div>
