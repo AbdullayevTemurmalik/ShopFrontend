@@ -4,12 +4,14 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, ShoppingCart, Heart, LogOut, Settings, Menu, X, Home, Store } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ConfirmModal from './ConfirmModal';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const { cartItems, wishlistItems } = useCart();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -38,15 +40,6 @@ const Navbar = () => {
                 <span>Admin</span>
               </Link>
             )}
-            {user && (
-              <button 
-                onClick={logout} 
-                className="text-sm font-bold flex items-center gap-1 text-slate-400 hover:text-red-500 transition-all"
-              >
-                <LogOut className="w-4 h-4" />
-                <span>Chiqish</span>
-              </button>
-            )}
           </div>
 
           <div className="flex items-center gap-2 xs:gap-4">
@@ -58,6 +51,16 @@ const Navbar = () => {
               <ShoppingCart className="w-5 h-5" />
               {cartItems.length > 0 && <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-slate-950">{cartItems.length}</span>}
             </Link>
+
+            {user && (
+              <button 
+                onClick={() => setIsLogoutModalOpen(true)} 
+                className="hidden md:flex p-2.5 bg-red-500/10 border border-red-500/20 rounded-xl text-red-500 hover:bg-red-600 hover:text-white transition-all active:scale-90 items-center justify-center"
+                title="Chiqish"
+              >
+                <LogOut className="w-5 h-5" />
+              </button>
+            )}
             
             <button 
               onClick={toggleMenu} 
@@ -84,8 +87,7 @@ const Navbar = () => {
               animate="open"
               exit="closed"
               variants={menuVariants}
-              style={{ backgroundColor: '#1e3a8a' }}
-              className="fixed top-0 right-0 bottom-0 w-[300px] border-l border-blue-500/30 z-[70] p-8 shadow-2xl flex flex-col"
+              className="fixed top-0 right-0 bottom-0 w-[300px] bg-blue-950 border-l border-blue-500/30 z-[70] p-8 shadow-2xl flex flex-col"
             >
               <div className="flex justify-between items-center mb-12">
                 <div className="flex items-center gap-3">
@@ -139,7 +141,7 @@ const Navbar = () => {
                   </div>
                 </div>
                 <button 
-                  onClick={() => { toggleMenu(); logout(); }}
+                  onClick={() => { toggleMenu(); setIsLogoutModalOpen(true); }}
                   className="w-full flex items-center justify-center gap-3 bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white p-5 rounded-[20px] font-black text-lg transition-all active:scale-95"
                 >
                   <LogOut className="w-6 h-6" />
@@ -150,6 +152,15 @@ const Navbar = () => {
           </>
         )}
       </AnimatePresence>
+
+      <ConfirmModal 
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={logout}
+        title="Tizimdan chiqish"
+        message="Rostdan ham tizimdan chiqishni xohlaysizmi?"
+        confirmText="Chiqish"
+      />
     </nav>
   );
 };
